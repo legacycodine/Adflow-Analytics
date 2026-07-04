@@ -61,7 +61,7 @@ adflow-analytics/
 └── README.md
 Getting Started
 # Clone the repo
-git clone https://github.com/your-username/adflow-analytics.git
+https://github.com/legacycodine/Adflow-Analytics.git
 
 # Install backend dependencies
 cd server && npm install
