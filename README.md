@@ -1,73 +1,107 @@
-# Adflow-Analytics
+# Adflow Analytics
 
-Enterprise Transaction Reporting & Cash-Flow Intelligence Portal
-A full-stack finance analytics dashboard designed for account officers and financial analysts to monitor corporate transaction streams, track liquidity, and audit transactional data across client portfolios.
+**Enterprise Transaction Reporting & Cash-Flow Intelligence Portal**
 
-Project Overview
-Adflow Analytics is built as an internal banking portal, not a retail personal finance app. 
-It supports high-volume transaction monitoring with interactive data visualization and tabular ledger auditing.
+A full-stack finance analytics dashboard built for account officers and financial analysts to monitor corporate transaction streams, track liquidity, and audit transactional data across client portfolios.
 
-Target Users: Account officers, corporate relationship managers, financial analysts
+## Project Overview
 
-Dashboard Views
-Executive Analytics View (Visualizer Page)
-KPI Summary Cards: Total Volume, Net Liquidity, Transaction Success Rate (%)
-Time-Series Line Chart: Inflows vs. Outflows over daily/monthly scales
-Channel Distribution Donut Chart: Volume by channel (Wire, POS, API)
-Transaction Ledger View (DataTable Page)
-Interactive table with sorting, search, and pagination
-Dropdown filters: date range, settlement status, transaction direction
-Technology Stack
-Layer	Tool
-Frontend	React.js + Tailwind CSS
-Tables	TanStack Table
-Charts	Chart.js
-Backend	Node.js + Express
-Database	PostgreSQL
-Version Control	Git + GitHub
-System Architecture
-Browser (React) → Axios → Express Router → Controller Layer → PostgreSQL → JSON Response → TanStack Table / Chart.js
+Adflow Analytics is designed as an internal banking portal rather than a retail personal-finance app. It supports high-volume transaction monitoring through an interactive tabular ledger and rich data visualization, backed by a relational SQL database and a RESTful API.
 
-System Architecture Diagram
+**Target users:** Account officers, corporate relationship managers, financial analysts
 
-Entity Relationship Diagram (ERD)
-ERD Diagram
+## Dashboard Views
 
-Tables
-users — user_id (UUID), company_name, email, password_hash
-accounts — account_id (UUID), user_id (FK), account_number, current_balance (NUMERIC 15,2)
-categories — category_id (INT), name, type, description
-transactions — transaction_id (UUID), account_id (FK), category_id (FK), amount, direction, channel, status, timestamp
-Relationships
-USERS ||--o{ ACCOUNTS : owns
-ACCOUNTS ||--o{ TRANSACTIONS : records
-CATEGORIES ||--o{ TRANSACTIONS : classifies
-Project Structure
+**Executive Analytics View (Visualizer Page)**
+- KPI summary cards — Total Processed Volume, Net Liquidity Position, Transaction Success Rate (%)
+- Time-series line chart — inflows vs. outflows over daily/monthly scales
+- Channel distribution donut chart — volume by channel (Wire, POS, API)
+
+**Transaction Ledger View (DataTable Page)**
+- Interactive table with sorting, search, and pagination
+- Dropdown filters — date range, settlement status, transaction direction
+
+## Technology Stack
+
+| Layer | Tool |
+|---|---|
+| Frontend | React.js + Tailwind CSS |
+| Tables | DataTables.js |
+| Charts | Chart.js |
+| Backend | Node.js + Express |
+| Database | PostgreSQL |
+| Version Control | Git + GitHub |
+
+## System Architecture
+
+```
+Browser (React) → Axios → Express Router → Controller Layer → PostgreSQL
+     ↑                                                              │
+     └──────────────── JSON Response → DataTables.js / Chart.js ────┘
+```
+
+See [`docs/architecture-diagram.png`](docs/architecture-diagram.png) for the full data-flow diagram.
+
+## Entity Relationship Diagram (ERD)
+
+![ERD Diagram](docs/erd-diagram.png)
+
+**Tables**
+- `users` — user_id (UUID, PK), company_name, email (unique), password_hash
+- `accounts` — account_id (UUID, PK), user_id (FK), account_number, current_balance (NUMERIC 15,2)
+- `categories` — category_id (INT, PK), name, type (credit/debit), description
+- `transactions` — transaction_id (UUID, PK), account_id (FK), category_id (FK), amount, direction, channel, status, timestamp
+
+**Relationships**
+```
+USERS       ||--o{  ACCOUNTS      : owns
+ACCOUNTS    ||--o{  TRANSACTIONS  : records
+CATEGORIES  ||--o{  TRANSACTIONS  : classifies
+```
+
+## Project Structure
+
+```
 adflow-analytics/
-├── client/          # React frontend
+├── client/                    # React frontend
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   └── App.jsx
-├── server/          # Node.js + Express backend
+├── server/                    # Node.js + Express backend
 │   ├── routes/
 │   ├── controllers/
 │   └── index.js
-├── database/        # SQL schema and seed files
+├── database/                  # SQL schema and seed files
 │   └── schema.sql
-├── docs/            # Diagrams and design assets
+├── docs/                      # Diagrams and design assets
 │   ├── architecture-diagram.png
 │   └── erd-diagram.png
 └── README.md
-Getting Started
-# Clone the repo
-https://github.com/legacycodine/Adflow-Analytics.git
+```
 
-# Install backend dependencies
+## Getting Started
+
+**1. Clone the repo**
+```
+git clone https://github.com/legacycodine/Adflow-Analytics.git
+```
+
+**2. Install backend dependencies**
+```
 cd server && npm install
+```
 
-# Install frontend dependencies
+**3. Install frontend dependencies**
+```
 cd client && npm install
+```
 
-# Start development servers
+**4. Start development servers**
+```
 npm run dev
+```
+
+## Status
+
+**Phase 1 — Conceptual Design.** Repository initialized; implementation begins in Phase 2 following tutor feedback.
