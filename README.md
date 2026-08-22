@@ -40,11 +40,10 @@ Browser (React) → Axios → Express Router → Controller Layer → PostgreSQL
      └──────────────── JSON Response → DataTables.js / Chart.js ────┘
 ```
 
-See [`docs/architecture-diagram.png`](docs/architecture-diagram.png) for the full data-flow diagram.
 
 ## Entity Relationship Diagram (ERD)
 
-![ERD Diagram](docs/erd-diagram.png)
+
 
 **Tables**
 - `users` — user_id (UUID, PK), company_name, email (unique), password_hash
