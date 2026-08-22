@@ -41,8 +41,7 @@ Browser (React) → Axios → Express Router → Controller Layer → PostgreSQL
 ```
 
 
-## Entity Relationship Diagram (ERD)
-
+## Entity Relationship Diagram
 
 
 **Tables**
