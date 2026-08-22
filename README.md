@@ -1,3 +1,4 @@
+
 # Adflow Analytics
 
 **Enterprise Transaction Reporting & Cash-Flow Intelligence Portal**
@@ -21,6 +22,10 @@ Adflow Analytics is designed as an internal banking portal rather than a retail 
 - Interactive table with sorting, search, and pagination
 - Dropdown filters — date range, settlement status, transaction direction
 
+  ## UI Wireframe 
+
+  <img width="2231" height="1377" alt="wireframe-diagram" src="https://github.com/user-attachments/assets/73a869c2-158c-47ba-863b-a40879c1f226" />
+
 ## Technology Stack
 
 | Layer | Tool |
@@ -42,7 +47,7 @@ Browser (React) → Axios → Express Router → Controller Layer → PostgreSQL
 <img width="2121" height="559" alt="architecture-diagram" src="https://github.com/user-attachments/assets/144b4c6a-8ebf-495e-9a4e-4797b94c71e3" />
 
 
-## Entity Relationship Diagram
+Entity Relationship Diagram (ERD)
 
 <img width="2121" height="777" alt="erd-diagram" src="https://github.com/user-attachments/assets/e2b340bb-f1e5-4d8e-9c8d-c4795f475daf" />
 
